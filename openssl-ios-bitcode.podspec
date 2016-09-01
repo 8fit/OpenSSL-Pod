@@ -6,8 +6,8 @@ Pod::Spec.new do |s|
 
   s.homepage        = "https://github.com/stayHF/OpenSSL-Pod.git"
   s.license         = 'BSD-style Open Source'
-  s.source          = { :http => "https://www.openssl.org/source/openssl-1.0.2h.tar.gz", :sha1 => "577585f5f5d299c44dd3c993d3c0ac7a219e4949"}
-  s.source_files    = "opensslIncludes/openssl/*.h"
+  s.source          = { :git => 'https://github.com/8fit/OpenSSL-Pod' }
+  s.source_files    = "openssl/*.h"
   s.header_dir      = "openssl"
   s.license         = { :type => 'OpenSSL (OpenSSL/SSLeay)', :file => 'LICENSE' }
 
@@ -74,9 +74,9 @@ Pod::Spec.new do |s|
     lipo -create ${LIPO_LIBCRYPTO} -output "${BASEPATH}/lib/libcrypto.a"
 
     echo "Copying headers..."
-    rm -rf "${BASEPATH}/opensslIncludes/"
-    mkdir -p "${BASEPATH}/opensslIncludes/"
-    cp -RL "${CURRENTPATH}/openssl-${VERSION}/include/openssl" "${BASEPATH}/opensslIncludes/"
+    rm -rf "${BASEPATH}/openssl/"
+    mkdir -p "${BASEPATH}/openssl/"
+    cp -RL "${CURRENTPATH}/openssl-${VERSION}/include/openssl" "${BASEPATH}/"
 
     cd "${BASEPATH}"
     echo "Building done."
@@ -87,10 +87,9 @@ Pod::Spec.new do |s|
   CMD
 
   s.platform            = :ios
-  s.public_header_files = "opensslIncludes/openssl/*.h"
+  s.public_header_files = "openssl/*.h"
   s.vendored_libraries  = "lib/libcrypto.a", "lib/libssl.a"
-
-  s.libraries             = 'crypto', 'ssl'
-  s.requires_arc          = false
+  s.libraries           = 'crypto', 'ssl'
+  s.requires_arc        = false
 
 end
