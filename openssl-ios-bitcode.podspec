@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.source          = { :http => "https://www.openssl.org/source/openssl-1.0.2h.tar.gz", :sha1 => "577585f5f5d299c44dd3c993d3c0ac7a219e4949"}
   s.source_files    = "opensslIncludes/openssl/*.h"
   s.header_dir      = "openssl"
-  s.license	        = { :type => 'OpenSSL (OpenSSL/SSLeay)', :file => 'LICENSE' }
+  s.license         = { :type => 'OpenSSL (OpenSSL/SSLeay)', :file => 'LICENSE' }
 
   s.prepare_command = <<-CMD
     VERSION="1.0.2h"
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
     BASEPATH="${PWD}"
     CURRENTPATH="${TMPDIR}/openssl"
-    ARCHS="i386 x86_64 armv7 arm64"
+    ARCHS="i386 x86_64 armv7 armv7s arm64"
     DEVELOPER=`xcode-select -print-path`
 
     mkdir -p "${CURRENTPATH}"
